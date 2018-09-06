@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <style>
+        input {border: #ddd solid 1px}
+        .error {border-color: red;}
+        .hover {border-color: black;}
+        .focus {border-color: blue;}
+    </style>
+</head>
+<body>
+<input type="text">
+<script>
+    $('input').focus(function () {
+        var $this = $(this);
+        $this.removeClass(['error', 'hover']);
+        $this.addClass('focus');
+    }).blur(function () {
+        var $this = $(this);
+        $this.removeClass('focus');
+        if ($this.val() === '') {
+            $this.addClass('error');
+        } else {
+            $this.removeClass('error');
+        }
+    }).mouseenter(function () {
+        var $this = $(this);
+        if (!$this.hasClass('error')) {
+            $this.addClass('hover');
+        }
+    }).mouseleave(function () {
+        $(this).removeClass('hover');
+    })
+</script>
+</body>
+</html>
