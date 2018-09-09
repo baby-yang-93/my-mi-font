@@ -1,0 +1,518 @@
+/*登陆注册页*/
+a, a:hover {
+    text-decoration: none;
+}
+
+/*左侧幻灯片*/
+html, body, #box {
+    height: 100%;
+}
+
+#box {
+    position: relative;
+
+}
+
+.big-logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.big-logo img {
+    width: 34px;
+    vertical-align: -10px;
+}
+
+.big-logo span {
+    font-size: 38px;
+    margin-left: 8px;
+}
+
+#left-box {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('https://4.url.cn/zc/v3/img/01-1.jpg');
+    background-size: cover;
+    width: 480px;
+    float: left;
+}
+
+#right-box {
+    height: 100%;
+    margin-left: 480px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#right-box > .top:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.top-menu {
+    position: relative;
+    z-index: 1;
+}
+
+/*右侧选择菜单头部*/
+.top-menu:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.top-menu ul {
+    padding: 0;
+    font-size: 16px;
+    margin-top: 25px;
+    margin-right: 40px;
+    z-index: 1;
+    float: right;
+    width: 482px;
+}
+
+@media screen and (max-width: 885px) {
+    .top-menu ul {
+        width: 350px;
+    }
+
+    .top-menu ul > li:first-child {
+        display: none;
+    }
+}
+
+.top-menu li {
+    line-height: 30px;
+    color: #000000;
+    opacity: .6;
+    margin-right: 40px;
+    display: inline-block;
+}
+
+.top-menu li a {
+    color: #000;
+    display: inline-block;
+}
+
+.top-menu .pretty, .top-menu .lang {
+    position: relative;
+}
+
+.top-menu .pretty, .top-menu li:hover {
+    opacity: 1;
+}
+
+.top-menu .pretty > a:first-child {
+    padding-left: 10px;
+}
+
+.top-menu .pretty > a:first-child img {
+    width: 22px;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/*AA靓号下面隐藏的div*/
+.top-menu .pretty .search {
+    width: 290px;
+    height: 114px;
+    position: absolute;
+    top: 26px;
+    right: 0;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .12);
+    border-radius: 7px;
+    border: 1px solid #f0f0f0;
+    display: none;
+    overflow: hidden;
+    background: #fff;
+    z-index: 1;
+}
+
+.top-menu .pretty:hover .search {
+    display: block;
+}
+
+/*  div的上半部分*/
+.top-menu .pretty .search div:first-child {
+    height: 49px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.top-menu .pretty .search div input {
+    border: none;
+    outline-style: none;
+    width: 228px;
+    margin: 10px 9px 0 10px;
+    float: left;
+    font-size: 16px;
+}
+
+.top-menu .pretty .search div input::-webkit-input-placeholder {
+    opacity: 0.9;
+    font-size: 30px;
+}
+
+.top-menu .pretty .search div:first-child a {
+    display: inline-block;
+    width: 40px;
+    height: 100%;
+    border-left: 1px solid #f0f0f0;
+    line-height: 50px;
+    text-align: center;
+}
+
+.top-menu .pretty .search div:first-child a:hover {
+    background: linear-gradient(54deg, #fc4754, #ff794c);
+}
+
+.top-menu .pretty .search div:first-child i {
+    background: url("/img/search.png") no-repeat center;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.top-menu .pretty .search div:first-child a:hover i {
+    background-image: url("/img/search-hover.png");
+}
+
+/*div的下半部分*/
+.top-menu .pretty .search div:last-child {
+    text-align: center;
+    line-height: 65px;
+}
+
+.top-menu .pretty .search div:last-child a {
+    margin: 0 5px;
+    color: #359eff;
+    font-size: 16px;
+}
+
+.top-menu .pretty .search div:last-child a:hover {
+    color: #2b72ff;
+}
+
+/*AA靓号背景颜色*/
+.top-menu .pretty span {
+    background: linear-gradient(35deg, #fc4754, #ff794c);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 0 10px 0 18px;
+    line-height: 21px;
+    color: #fff;
+}
+
+.top-menu .email a {
+    background: url("/img/mail-entry@2x.png") no-repeat left;
+    background-size: 18px;
+    padding-left: 21px;
+}
+
+.top-menu .lang span {
+    background: url("/img/down.png") no-repeat right center;
+    display: inline-block;
+    padding-right: 17px;
+    background-size: 11px;
+}
+
+.top-menu .lang {
+    position: relative;
+}
+
+/*简体中文的隐藏div*/
+.top-menu .lang:hover span {
+    background-image: url("/img/up.png");
+}
+
+.top-menu .lang div {
+    width: 80px;
+    height: 85px;
+    margin-top: 5px;
+    display: none;
+    position: absolute;
+    top: 24px;
+}
+
+.top-menu .lang:hover div {
+    display: block;
+}
+
+.top-menu .lang:hover div a {
+    opacity: .6;
+}
+
+.top-menu .lang div a:hover {
+    opacity: 1;
+}
+
+.middle {
+    margin: 0 auto;
+    position: relative;
+    width: 480px;
+    height: 100%;
+    overflow: hidden;
+    /*min-height: 850px;*/
+}
+
+.footer {
+    color: #bbb;
+    position: absolute;
+    bottom: 30px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+/*右侧下半部分注册主体*/
+.main {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.main .top p:first-child {
+    font-size: 44px;
+}
+
+.main .top p:last-child {
+    font-size: 28px;
+    line-height: 35px;
+}
+
+.main .top p:last-child a {
+    color: #359eff;
+    font-size: 24px;
+    float: right;
+}
+
+.main .top p:last-child a:hover {
+    color: #2b72ff;
+}
+
+/*input部分*/
+.main .center {
+    margin-top: 55px;
+}
+
+.main .center input {
+    outline-style: none;
+}
+
+.main .center > div {
+    margin-bottom: 30px;
+}
+
+.main .center > div > div {
+    padding: 10px 20px;
+    border: 1px #aaa solid;
+    border-radius: 5px;
+
+}
+
+/*input焦点时候的蓝色*/
+.main .center > div > div.focus {
+    border: 1px #549df8 solid;
+}
+
+.main .center > div > div.error {
+    border: 1px red solid;
+}
+
+/*!**!*/
+/*.main .center > div > div:hover:not(.focus):not(.error) {*/
+/*border-color: #414141;*/
+/*}*/
+
+.main .center > div > div input {
+    border: none;
+    width: 100%;
+    font-size: 20px;
+}
+
+.main .center > div > p {
+    margin: 8px 0 0 0;
+    padding-left: 25px;
+    font-size: 14px;
+    line-height: 20px;
+    /*display: none;*/
+}
+
+.main .center > div > p.error {
+    color: red;
+    background: url("/img/error@2x.png") no-repeat left center;
+    background-size: 18px;
+}
+
+/*+86手机部分*/
+.main .center .phone86:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.main .center .phone86 {
+    position: relative;
+}
+
+.main .center .phone86 div {
+    float: left;
+}
+
+.main .center .phone86 div:first-child {
+    background: url("/img/down.png") no-repeat 130px center;
+    width: 22%;
+    margin-right: 18px;
+    padding-right: 30px;
+}
+
+.main .center .phone86 .no86 input::placeholder {
+    opacity: 1;
+}
+
+.main .center .phone86 div:nth-child(2) {
+    width: 54%;
+}
+
+.main .center .phone86 ul {
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    border: 1px solid #aaa;
+    top: 48px;
+    background: #fff;
+    overflow: auto;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .15);
+    z-index: 1;
+    border-radius: 3px;
+    /*display: none;*/
+}
+
+.main .center .phone86 ul li {
+    font-size: 20px;
+    line-height: 50px;
+    padding: 0 20px;
+}
+
+.main .center .phone86 ul li:hover {
+    background: #eeeeee;
+}
+
+.main .center .phone86 span {
+    color: #999;
+    line-height: 30px;
+}
+
+.main .center .register-button {
+    display: block;
+    height: 60px;
+    border-radius: 4px;
+    border: 1px solid #3083ff;
+    background: linear-gradient(0deg, #398bff, #3083ff);
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    line-height: 58px;
+    font-weight: lighter;
+    box-shadow: 0 5px 8px 0 rgba(24, 95, 255, .1);
+    margin: 35px 0;
+}
+
+.main .center .register-button:hover {
+    background-image: linear-gradient(0deg, #3580eb, #2c79eb);
+}
+
+.main .bottom div:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.main .bottom div span {
+    font-size: 13px;
+    color: #aaa;
+    float: left;
+    margin: 1px 5px 15px 3px;
+}
+
+/*js部分脚部复选框切换*/
+.main .bottom div span {
+    background: url("/img/checkbox_normal@2x.png") no-repeat left;
+    /*width: 18px;*/
+    /*height: 18px;*/
+    /*display: inline-block;*/
+    background-size: 18px;
+    float: left;
+    padding-left: 20px;
+    line-height: 18px;
+}
+
+.main .bottom div i.clickShow {
+    background: url("/img/checkbox_check@2x.png") no-repeat left;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-size: 18px;
+    float: left;
+}
+
+/*.main .bottom b {*/
+/*background: url("../img/down.png") no-repeat bottom;*/
+/*width: 12px;*/
+/*height: 14px;*/
+/*display: inline-block;*/
+/*background-size: 12px;*/
+/*float: left;*/
+/**/
+/*}*/
+.main .bottom {
+    position: relative;
+}
+
+.main .bottom div.last-child {
+    width: 500px;
+    position: absolute;
+    left: 20px;
+    top: 60px;
+    /*display: none;*/
+}
+
+.main .bottom div.last-child a {
+    display: block;
+    color: #359eff;
+}
+
+.main .bottom div.last-child a:hover {
+    color: #2b72ff;
+}
+
+/*@media screen and (min-width: 1201px) { !*当屏幕尺寸小于600px时，应用下面的CSS样式*!*/
+/*#left-box {*/
+/*height: 100%;*/
+/*background-repeat: no-repeat;*/
+/*background-position: center;*/
+/*background-image: url('https://4.url.cn/zc/v3/img/01-1.jpg');*/
+/*background-size: cover;*/
+/*width: 480px;*/
+/*}*/
+/*}*/
+@media screen  and (min-width: 1001px) and (max-width: 1200px) {
+    /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+    #left-box {
+        width: 240px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+    #left-box {
+        display: none;
+    }
+}
+

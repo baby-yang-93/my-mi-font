@@ -1,5 +1,5 @@
 <template>
-    <div class="middle">
+    <div class="main">
         <div class="top">
             <p>欢迎注册AA</p>
             <p>
@@ -8,31 +8,31 @@
             </p>
         </div>
         <div class="center">
-            <div class="username">
-                <div>
-                    <input type="text" placeholder="用户名" name="username">
-                </div>
-                <p class="error">用户名不可以为空</p>
-            </div>
-            <div class="password">
-                <div>
-                    <input type="password" placeholder="密码" name="password">
-                </div>
-                <p class="error">密码不可以为空</p>
-                <ul>
-                    <li><img src="" alt="">不能包括空格</li>
-                    <li><img src="" alt="">长度为8-16个字符</li>
-                    <li><img src="" alt="">必须包含字母、数字、符号中至少两种</li>
-                </ul>
-            </div>
+            <input-border class-border="username" type="text" name="username" placeholder="用户名">
+                <template slot-scope="inputBorder">
+                    <p class="error" v-if="inputBorder.error">用户名不可以为空</p>
+                </template>
+            </input-border>
+
+            <input-border class-border="password" type="password" name="password" placeholder="密码">
+                <template slot-scope="inputBorder">
+                    <p class="error" v-if="inputBorder.error">密码不可以为空</p>
+                    <template v-if="inputBorder.isFocus">
+                        <p class="ok">不能包括空格</p>
+                        <p class="info">长度为8-16个字符</p>
+                        <p class="info">必须包含字母、数字、符号中至少两种</p>
+                    </template>
+
+                </template>
+            </input-border>
             <div class="phone86">
-                <div>
-                    <input type="text" placeholder="+86">
+                <div class="no86">
+                    <input type="text" placeholder="+86" @focus="phone86 = true" @blur="phone86 = false">
                 </div>
                 <div>
                     <input type="text" placeholder="手机号码">
                 </div>
-                <ul>
+                <ul v-if="phone86">
                     <li>中国+86</li>
                     <li>中国+87</li>
                     <li>中国+88</li>
@@ -52,202 +52,65 @@
         </div>
         <div class="bottom">
             <div>
-                <i></i><span>同时开通QQ空间</span>
+                <span :class="{selected:ok1}" @click="ok1 = ok1 ? false : true">同时开通QQ空间</span>
             </div>
             <div>
-                <i></i><span>我已阅读并同意相关服务条款和隐私政策</span><b></b>
+                <span @click="ok2 = ok2 ? false : true" :class="{selected:ok2}">我已阅读并同意相关服务条款和隐私政策</span><b
+                    @click="up = up ? false : true" :class="{up:up}"></b>
             </div>
-            <div>
+            <div v-if="up" class="last-child">
                 <a href="#">《AA号码规则》</a>
                 <a href="#">《隐私政策》</a>
                 <a href="#">《AA空间服务协议》</a>
             </div>
         </div>
-        <footer>Copyright © 1998-2018Tencent All Rights Reserved</footer>
     </div>
 </template>
 
 <script>
+    import inputBorder from "../components/input-border.vue";
+
     export default {
-        name: "register"
+        name: "register",
+        components: {
+            "input-border": inputBorder
+        },
+        data() {
+            return {
+                ok1: false,
+                ok2: false,
+                up: false,
+                phone86:false
+            }
+        },
+        methods: {}
     }
 </script>
 
 <style scoped>
-    /*右侧下半部分注册主体*/
-    .middle {margin-top: 40px; width: 60%;}
-    .middle .top p:first-child {
-        font-size: 44px;
-    }
-    .middle .top p:last-child {
-        font-size: 28px;
-        line-height: 35px;
-    }
-    .middle .top p:last-child a {
-        color: #359eff;
-        font-size: 24px;
-        float: right;
-    }
-    .middle .top p:last-child a:hover {
-        color: #2b72ff;
-    }
-    /*input部分*/
-    .middle .center {margin-top: 55px;}
-    .middle .center input {
-        outline-style: none;
-    }
-    .middle .center > div {
-        margin-bottom: 30px;
-    }
-    .middle .center > div > div {
-        padding: 10px 20px;
-        border: 1px #aaa solid;
-        border-radius: 5px;
-        font-size: 20px;
-    }
-    /*input焦点时候的蓝色*/
-    .middle .center > div > div.focus {
-        border: 1px #549df8 solid;
-    }
-    .middle .center > div > div.error {
-        border: 1px red solid;
-    }
-    /**/
-    .middle .center > div > div:hover:not(.focus):not(.error) {
-        border-color: #414141;
-    }
-    .middle .center > div > div input {
-        border: none;
-        width: 100%;
-    }
-    .middle .center > div > p {
-        margin: 8px 0 0 0;
-        padding-left: 25px;
-        display: none;
-    }
-    .middle .center > div > p.error {
-        color: red;
-        background: url("/img/error@2x.png") no-repeat left center;
+    .main .center .ok {
+        background: url("/img/green@2x.png") no-repeat left center;
         background-size: 18px;
     }
-    /*+86手机部分*/
-    .middle .center .phone86:after {
-        content: '';
-        clear: both;
-        display: block;
+
+    .main .center .info {
+        background: url("/img/info@2x.png") no-repeat left center;
+        background-size: 18px;
     }
-    .middle .center .phone86 {
-        position: relative;
+
+    .main .bottom div .selected {
+        background: url("/img/checkbox_check@2x.png") no-repeat left center;
+        background-size: 18px;
     }
-    .middle .center .phone86 div {
-        float: left;
-    }
-    .middle .center .phone86 div:first-child {
-        background: url("/img/down.png") no-repeat 130px center;
-        width: 25%;
-        margin-right: 18px;
-        padding-right: 30px;
-    }
-    .middle .center .phone86 div:first-child input::-webkit-input-placeholder {
-        color: #000;
-    }
-    .middle .center .phone86 div:nth-child(2) {
-        width: 46%;
-    }
-    .middle .center .phone86 ul {
-        height: 200px;
-        width: 100%;
-        position: absolute;
-        border: 1px solid #aaa;
-        top: 52px;
-        background: #fff;
-        overflow: auto;
-        box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .15);
-        display: none;
-    }
-    .middle .center .phone86 ul li {
-        font-size: 20px;
-        line-height: 50px;
-        padding: 0 20px;
-    }
-    .middle .center .phone86 ul li:hover {
-        background: #eeeeee;
-    }
-    .middle .center .phone86 span {color: #999;line-height: 30px;}
-    .middle .center .register-button {
-        display: block;
-        height: 60px;
-        border-radius: 4px;
-        border: 1px solid #3083ff;
-        background: linear-gradient(0deg, #398bff, #3083ff);
-        color: #fff;
-        font-size: 24px;
-        text-align: center;
-        line-height: 58px;
-        font-weight: lighter;
-        box-shadow: 0 5px 8px 0 rgba(24, 95, 255, .1);
-        margin: 35px 0;
-    }
-    .middle .center .register-button:hover {
-        background-image: linear-gradient(0deg, #3580eb, #2c79eb);
-    }
-    .middle .bottom div:after {
-        content: '';
-        clear: both;
-        display: block;
-    }
-    .middle .bottom div span {
-        font-size: 13px;
-        color: #aaa;
-        float: left;
-        margin: 1px 5px 15px 3px;
-    }
-    /*js部分脚部复选框切换*/
-    .middle .bottom div i {
-        background: url("/img/checkbox_normal@2x.png") no-repeat left;
-        width: 18px;
-        height: 18px;
+
+    .main .bottom div b {
+        background: url("/img/down.png") no-repeat left center;
         display: inline-block;
-        background-size: 18px;
-        float: left;
+        width: 20px;
+        height: 20px;
+        background-size: 12px;
     }
-    .middle .bottom div i.clickShow {
-        background: url("/img/checkbox_check@2x.png") no-repeat left;
-        width: 18px;
-        height: 18px;
-        display: inline-block;
-        background-size: 18px;
-        float: left;
-    }
-    /*.middle .bottom b {*/
-    /*background: url("../img/down.png") no-repeat bottom;*/
-    /*width: 12px;*/
-    /*height: 14px;*/
-    /*display: inline-block;*/
-    /*background-size: 12px;*/
-    /*float: left;*/
-    /**/
-    /*}*/
-    .middle .bottom {
-        position: relative;
-    }
-    .middle .bottom div:last-child {
-        width: 500px;
-        position: absolute;
-        left: 20px;
-        top: 60px;
-        display: none;
-    }
-    .middle .bottom div:last-child a {
-        display: block;
-        color: #359eff;
-    }
-    .middle .bottom div:last-child a:hover {
-        color: #2b72ff;
-    }
-    footer {
-        color: #bbb;
-        text-align: center;
-        margin-top: 80px;
+    .main .bottom div b.up{
+        background-image: url("/img/up.png");
     }
 </style>
