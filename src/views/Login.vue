@@ -32,42 +32,6 @@
         components: {
             "input-border": inputBorder
         }
-        // data() {
-        //     return {
-        //         username: {
-        //             error: false,
-        //             borderColor: "#aaa",
-        //             value: "",
-        //             isFocus: false
-        //         }
-        //     }
-        // },
-        // methods: {
-        //     onFocus(obj) {
-        //         obj.borderColor = "blue";
-        //         obj.isFocus = true;
-        //     },
-        //     onBlur(obj) {
-        //         if (obj.value === "") {
-        //             obj.error = true;
-        //             obj.borderColor = "red";
-        //         } else {
-        //             obj.error = false;
-        //             obj.borderColor = "#aaa";
-        //         }
-        //         obj.isFocus = false;
-        //     },
-        //     onMouseOut(obj) {
-        //         if (!obj.error && !obj.isFocus) {
-        //             obj.borderColor = "#aaa";
-        //         }
-        //     },
-        //     onMouseOver(obj) {
-        //         if (!obj.error && !obj.isFocus) {
-        //             obj.borderColor = "#000";
-        //         }
-        //     }
-        //
-        // }
+
     }
 </script>

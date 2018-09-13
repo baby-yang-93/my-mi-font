@@ -72,7 +72,7 @@ html, body, #box {
     margin-right: 40px;
     z-index: 1;
     float: right;
-    width: 482px;
+    width: 485px;
 }
 
 @media screen and (max-width: 885px) {

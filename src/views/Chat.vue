@@ -15,12 +15,91 @@
                         <i></i><input type="text" name="" id="" placeholder="搜索">
                     </div>
                     <div class="buttons">
-                        <a href="#" class="button1"></a>
-                        <a href="#" class="button2"></a>
-                        <a href="#" class="button3"></a>
+                        <div>
+                            <a href="#" class="button1"></a>
+                        </div>
+                        <div>
+                            <a href="#" class="button2"></a>
+                        </div>
+                        <div>
+                            <a href="#" class="button3"></a>
+                        </div>
+                    </div>
+
+                    <!--左侧好友对话菜单-->
+                    <div class="scrollbar test-1">
+                        <!--滚动条-->
+                        <div class="item" @onclick="">
+                            <img src="../../public/img/chatImage/touxiang.jpg" alt="">
+                            <span>董菲</span>
+                            <b>14:30</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang2.png" alt="">
+                            <span>星星的记号</span>
+                            <b>14:53</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang3.png" alt="">
+                            <span>秦影</span>
+                            <b>14:12</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang3.png" alt="">
+                            <span>秦影</span>
+                            <b>14:12</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang3.png" alt="">
+                            <span>秦影</span>
+                            <b>14:12</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang3.png" alt="">
+                            <span>秦影</span>
+                            <b>14:12</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang3.png" alt="">
+                            <span>秦影</span>
+                            <b>14:12</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang3.png" alt="">
+                            <span>秦影</span>
+                            <b>14:12</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang3.png" alt="">
+                            <span>秦影</span>
+                            <b>14:12</b>
+                            <p>这是一条信息</p>
+                        </div>
+                        <div class="item">
+                            <img src="../../public/img/chatImage/touxiang3.png" alt="">
+                            <span>秦影</span>
+                            <b>14:12</b>
+                            <p>这是一条信息</p>
+                        </div>
                     </div>
                 </div>
                 <!--右侧聊天页-->
+                <div class="right-all">
+                    <!--没选择好友时默认显示的div-->
+                    <div class="unselected">
+                        <p></p>
+                        <div class="wx-background"><span>未选择聊天</span></div>
+
+                    </div>
+                </div>
             </div>
             <footer> © 1998 - 2018 Tencent Inc. All Rights Reserved 帮助</footer>
         </div>
@@ -29,119 +108,12 @@
 </template>
 
 <script>
+    import "../../public/css/char.css";
+
     export default {
         name: "Chat"
     }
 </script>
 
 <style scoped>
-
-    html, body {
-        overflow: hidden;
-        height: 100%;
-    }
-
-    body .bg {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        background: url("/img/dialogue-bj.jpg") no-repeat fixed;
-        background-size: cover;
-        padding: 1px;
-        box-sizing: border-box;
-        z-index: 1;
-    }
-
-    .bg:after {
-        content: "";
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: inherit;
-        filter: blur(20px);
-        z-index: 2;
-    }
-
-    .drag .dialogue-all {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 1000px;
-        height: 80%;
-        /*text-align: center;*/
-        z-index: 11;
-        background: #fff;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-
-    .drag .dialogue-all .left {
-        background: #2e3238;
-        width: 280px;
-        height: 100%;
-    }
-
-    .drag footer {
-        position: absolute;
-        left: 50%;
-        top: 97%;
-        transform: translate(-50%, -50%);
-        z-index: 11;
-        color: #e3e3e3;
-        font-size: 12px;
-    }
-
-    .dialogue-all .left .top {
-        padding: 18px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .dialogue-all .left .top img {
-        width: 40px;
-    }
-
-    .dialogue-all .left .top span {
-        display: inline-block;
-        color: #fff;
-        font-size: 18px;
-        line-height: 40px;
-    }
-
-    .dialogue-all .left .top a {
-        background-repeat: no-repeat;
-        background-position: -438px -396px;
-        background-image: url("/img/chatImage/pictorAll.png");
-        width: 30px;
-        height: 30px;
-        display: inline-block;
-    }
-
-    .dialogue-all .left .search {
-
-        padding: 0 18px;
-    }
-
-    .dialogue-all .left .search i {
-        background-repeat: no-repeat;
-        background-position: -60px -432px;
-        background-image: url("/img/chatImage/pictorAll.png");
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        vertical-align:-10px;
-        background-color: #26292e;
-    }
-
-    .dialogue-all .left .search input {
-        line-height: 30px;
-        border: none;
-        color: #fff;
-        width: 86%;
-        background-color: #26292e;
-    }
-
 </style>
