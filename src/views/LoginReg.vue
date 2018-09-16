@@ -45,8 +45,8 @@
                         </div>
                     </li>
                     <li>
-                        <router-link v-if="$route.path === '/login'" to="/register">立即注册</router-link>
-                        <router-link v-else to="/login">立即登录</router-link>
+                        <router-link v-if="$route.path === '/login-reg/login'" to="register">立即注册</router-link>
+                        <router-link v-else to="/login-reg/login">立即登录</router-link>
                     </li>
                 </ul>
             </div>
@@ -73,10 +73,10 @@
             }
         },
         created() {
-           this.getImage();
+            this.getImage();
         },
         methods: {
-            getImage:function () {
+            getImage: function () {
                 var $this = this;
                 setInterval(function () {
                     if ($this.nowIndex >= $this.leftImages.length - 1) {

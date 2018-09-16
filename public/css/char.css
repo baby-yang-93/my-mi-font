@@ -2,9 +2,11 @@ html, body {
     overflow: hidden;
     height: 100%;
 }
+
 input {
     outline-style: none;
 }
+
 body .bg {
     width: 100%;
     height: 100%;
@@ -15,6 +17,7 @@ body .bg {
     box-sizing: border-box;
     z-index: 1;
 }
+
 .bg:after {
     content: "";
     width: 100%;
@@ -26,6 +29,7 @@ body .bg {
     filter: blur(20px);
     z-index: 2;
 }
+
 .drag .dialogue-all {
     position: absolute;
     left: 50%;
@@ -40,6 +44,7 @@ body .bg {
     overflow: hidden;
     display: flex;
 }
+
 .drag .dialogue-all .left {
     background: #2e3238;
     width: 280px;
@@ -47,6 +52,7 @@ body .bg {
     /*overflow: auto;*/
     position: relative;
 }
+
 .drag .dialogue-all .left .scrollbar {
     overflow: auto;
     width: 100%;
@@ -55,15 +61,22 @@ body .bg {
     top: 154px;
     bottom: 0;
 }
+
 .drag .dialogue-all .left .test-1::-webkit-scrollbar { /*滚动条整体样式*/
     width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
     height: 1px;
 }
+
+.drag .dialogue-all .left .test-1::-moz-scrolled-canvas {
+
+}
+
 .test-1::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
     background: #535353;
 }
+
 .drag footer {
     position: absolute;
     left: 50%;
@@ -73,20 +86,24 @@ body .bg {
     color: #e3e3e3;
     font-size: 12px;
 }
+
 .dialogue-all .left .top {
     padding: 18px;
     display: flex;
     justify-content: space-between;
 }
+
 .dialogue-all .left .top img {
     width: 40px;
 }
+
 .dialogue-all .left .top span {
     display: inline-block;
     color: #fff;
     font-size: 18px;
     line-height: 40px;
 }
+
 .dialogue-all .left .top a {
     background-repeat: no-repeat;
     background-position: -438px -397px;
@@ -94,10 +111,156 @@ body .bg {
     width: 30px;
     height: 30px;
     display: inline-block;
+    position: relative;
 }
+
+/*点击头像隐藏的个人信息*/
+.dialogue-all .left .data {
+    position: absolute;
+    top: 70px;
+    left: 45px;
+    z-index: 15;
+    background-color: #fff;
+    /*display: none;*/
+}
+
+.dialogue-all .left .data img {
+    width: 220px;
+    height: 220px;
+}
+
+.dialogue-all .left .data .details {
+    width: 180px;
+    height: 75px;
+    margin: 20px;
+}
+
+.dialogue-all .left .data .details .uname {
+    font-size: 18px;
+    height: 28.8px;
+    line-height: 30px;
+    margin-bottom: 5px;
+}
+
+.dialogue-all .left .data .details .uname span {
+    float: left;
+}
+
+.dialogue-all .left .data .details .uname i {
+    background-repeat: no-repeat;
+    background-position: -370px -305px;
+    background-image: url("/img/chatImage/pictorAll.png");
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    float: right;
+    margin: 7px 15px 0 5px;
+}
+
+.dialogue-all .left .data .details .uname b {
+    background-repeat: no-repeat;
+    background-position: -218px -430px;
+    background-image: url("/img/chatImage/pictorAll.png");
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+.dialogue-all .left .data .details p span {
+    font-size: 12px;
+    color: #888;
+    line-height: 25px;
+
+}
+
+.dialogue-all .left .data .details p span:first-child {
+    padding-right: 10px;
+}
+
+/*点击汉堡图标隐藏的个人信息*/
+.dialogue-all .left .set-up {
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 15;
+    right: 15px;
+    top: 58px;
+
+}
+
+.dialogue-all .left .set-up ul {
+    width: 180px;
+    height: 205px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.dialogue-all .left .set-up ul li {
+    width: 162px;
+    height: 34px;
+    padding: 8px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 14px;
+    line-height: 35px;
+}
+
+.dialogue-all .left .set-up ul li:hover {
+    background-color: #f5f5f5;
+}
+
+.dialogue-all .left .set-up ul li b.b1 {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: -70px -398px;
+    background-image: url("/img/chatImage/pictorAll.png");
+    margin-right: 5px;
+    float: left;
+}
+
+.dialogue-all .left .set-up ul li b.b2 {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: -170px -398px;
+    background-image: url("/img/chatImage/pictorAll.png");
+    margin-right: 5px;
+    float: left;
+}
+
+.dialogue-all .left .set-up ul li b.b3 {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: -305px -398px;
+    background-image: url("/img/chatImage/pictorAll.png");
+    margin-right: 5px;
+    float: left;
+}
+
+.dialogue-all .left .set-up ul li b.b4 {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: -100px -398px;
+    background-image: url("/img/chatImage/pictorAll.png");
+    margin-right: 5px;
+    float: left;
+}
+
+.dialogue-all .left .set-up ul li span {
+    float: left;
+    color: #000;
+}
+
 .dialogue-all .left .search {
     padding: 0 18px 6px 18px;
 }
+
 .dialogue-all .left .search i {
     background-repeat: no-repeat;
     background-position: -60px -432px;
@@ -108,6 +271,7 @@ body .bg {
     vertical-align: -10px;
     background-color: #26292e;
 }
+
 .dialogue-all .left .search input {
     line-height: 28px;
     border: none;
@@ -115,11 +279,13 @@ body .bg {
     width: 86%;
     background-color: #26292e;
 }
+
 .dialogue-all .left .buttons {
     height: 39px;
     width: 100%;
     border-bottom: 2px solid #26292e;
 }
+
 .dialogue-all .left .buttons div {
     display: inline-block;
     width: 93px;
@@ -127,22 +293,33 @@ body .bg {
     text-align: center;
     position: relative;
 }
+
 .dialogue-all .left .buttons a.button1 {
     width: 35px;
     height: 35px;
     display: inline-block;
     background-repeat: no-repeat;
-    background-position: -151px -96px;
+    background-position: -150px -96px;
     background-image: url("/img/chatImage/pictorAll.png");
 }
+
+.dialogue-all .left .buttons a.button1.is_active {
+    background-position: -185px -96px;
+}
+
 .dialogue-all .left .buttons a.button2 {
     width: 35px;
     height: 35px;
     display: inline-block;
     background-repeat: no-repeat;
-    background-position: -380px -320px;
+    background-position: -377px -322px;
     background-image: url("/img/chatImage/pictorAll.png");
 }
+
+.dialogue-all .left .buttons a.button2.is_active {
+    background-position: -305px -282px;
+}
+
 .dialogue-all .left .buttons a.button3 {
     width: 35px;
     height: 35px;
@@ -151,6 +328,11 @@ body .bg {
     background-position: -220px -96px;
     background-image: url("/img/chatImage/pictorAll.png");
 }
+
+.dialogue-all .left .buttons a.button3.is_active {
+    background-position: -305px -246px;
+}
+
 .dialogue-all .left .buttons a:after {
     content: "";
     position: absolute;
@@ -160,6 +342,7 @@ body .bg {
     height: 20px;
     border-right: 1px solid #24272c;
 }
+
 .dialogue-all .left .item {
     width: 244px;
     height: 40px;
@@ -168,18 +351,22 @@ body .bg {
     color: #fff;
     position: relative;
     border-bottom: 1px solid #292c33;
-    background: #3a3f45;
+    /*background: #3a3f45;*/
+    display: block;
 }
+
 .dialogue-all .left .item img {
     width: 40px;
     vertical-align: top;
     margin-right: 10px;
 }
+
 .dialogue-all .left .item span {
     display: inline-block;
     width: 158px;
     height: 20px;
 }
+
 .dialogue-all .left .item p {
     position: absolute;
     top: 36px;
@@ -187,21 +374,29 @@ body .bg {
     width: 158px;
     height: 19.5px;
 }
+
 /*右侧对话框*/
-.right-all .unselected{
+.right-all .unselected {
     width: 720px;
     height: 100%;
 }
-.unselected{
+
+.unselected {
     position: relative;
     opacity: .5;
 }
-.right-all p{
+
+.right-all {
+    width: 720px;
+}
+
+.right-all p {
     border-bottom: 1px solid #d6d6d6;
     height: 30px;
     margin: 0 19px;
     padding: 10px 0;
 }
+
 .wx-background {
     width: 120px;
     height: 100px;
@@ -212,7 +407,8 @@ body .bg {
     top: 200px;
     left: 265px;
 }
-.unselected span{
+
+.unselected span {
     font-size: 13px;
     color: #9c9c9c;
     display: block;

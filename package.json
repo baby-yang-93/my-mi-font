@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "address": "^1.0.3",
+    "echarts": "^4.2.0-rc.1",
     "mint-ui": "^2.2.13",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
