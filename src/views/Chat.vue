@@ -8,9 +8,9 @@
                 <div class="left">
                     <div class="top">
                         <a href="#" @click="showUserInfo = !showUserInfo">
-                            <img src="/img/chatImage/header.png" alt="">
+                            <img :src="userInfo.avatar" alt="">
                         </a>
-                        <span>福尔摩洋</span>
+                        <span>{{userInfo.username}}</span>
                         <a href="#" @click="showSetUp = !showSetUp"></a>
                     </div>
                     <!--隐藏的设置部分，点击后显示-->
@@ -20,16 +20,17 @@
                             <li><a href=""><b class="b2"></b><span>打开声音</span></a></li>
                             <li><a href=""><b class="b3"></b><span>意见反馈</span></a></li>
                             <li>
-                                <router-link to="/login-reg/login"><b class="b4"></b><span>退出</span></router-link>
+                                <router-link to="#" @click.native="onLogout"><b class="b4"></b><span>退出</span>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
                     <!--隐藏的个人信息部分，点击头像就会后显示-->
                     <div class="data" v-if="showUserInfo">
-                        <img src="img/chatImage/header.png" alt="">
+                        <img :src="userInfo.avatar" alt="">
                         <div class="details">
                             <div class="uname">
-                                <span>福尔摩洋</span>
+                                <span>{{userInfo.username}}</span>
                                 <b></b>
                                 <i></i>
                             </div>
@@ -86,7 +87,32 @@
         data() {
             return {
                 showUserInfo: false,
-                showSetUp: false
+                showSetUp: false,
+                userInfo: {}
+            }
+        },
+        created: function () {
+            // return;
+            var token = window.localStorage.getItem("login-token");
+            this.$http.get("check-token", {
+                params: {
+                    token: token
+                }
+            }).then(response => {
+                if (response.body.code == 0) {
+                    this.userInfo = response.body.result.user_info;
+                    this.userInfo.avatar = this.$http.options.root + this.userInfo.avatar;
+                } else {
+                    alert(response.body.msg);
+                    this.onLogout();
+                }
+
+            })
+        },
+        methods: {
+            onLogout: function () {
+                window.localStorage.removeItem("login-token");
+                this.$router.push("/login-reg");
             }
         }
     }

@@ -8,13 +8,13 @@
             </p>
         </div>
         <div class="center">
-            <input-border class-border="username" type="text" name="username" placeholder="用户名">
+            <input-border class-border="username" type="text" name="username" placeholder="用户名" v-model="username">
                 <template slot-scope="inputBorder">
                     <p class="error" v-if="inputBorder.error">用户名不可以为空</p>
                 </template>
             </input-border>
 
-            <input-border class-border="password" type="password" name="password" placeholder="密码">
+            <input-border class-border="password" type="password" name="password" placeholder="密码" v-model="password">
                 <template slot-scope="inputBorder">
                     <p class="error" v-if="inputBorder.error">密码不可以为空</p>
                     <template v-if="inputBorder.isFocus">
@@ -30,7 +30,7 @@
                     <input type="text" placeholder="+86" @focus="phone86 = true" @blur="phone86 = false">
                 </div>
                 <div>
-                    <input type="text" placeholder="手机号码">
+                    <input type="text" placeholder="手机号码" v-model="phone">
                 </div>
                 <ul v-if="phone86">
                     <li>中国+86</li>
@@ -47,16 +47,16 @@
                 <span>可通过该手机号找回密码</span>
             </div>
 
-            <a href="#" class="register-button">立即注册</a>
+            <router-link to="#" class="register-button" @click.native="onReg">立即注册</router-link>
 
         </div>
         <div class="bottom">
             <div>
-                <span :class="{selected:ok1}" @click="ok1 = ok1 ? false : true">同时开通QQ空间</span>
+                <span :class="{selected:ok1}" @click="ok1 = !ok1">同时开通QQ空间</span>
             </div>
             <div>
-                <span @click="ok2 = ok2 ? false : true" :class="{selected:ok2}">我已阅读并同意相关服务条款和隐私政策</span><b
-                    @click="up = up ? false : true" :class="{up:up}"></b>
+                <span @click="ok2 = !ok2" :class="{selected:ok2}">我已阅读并同意相关服务条款和隐私政策</span><b
+                    @click="up = !up" :class="{up:up}"></b>
             </div>
             <div v-if="up" class="last-child">
                 <a href="#">《AA号码规则》</a>
@@ -70,20 +70,51 @@
 <script>
     import inputBorder from "../components/input-border.vue";
 
+    var lock;
     export default {
         name: "register",
         components: {
             "input-border": inputBorder
+        },
+        created:function(){
+            lock = false;
         },
         data() {
             return {
                 ok1: false,
                 ok2: false,
                 up: false,
-                phone86:false
+                phone86: false,
+                username: "",
+                password: "",
+                phone: ""
             }
         },
-        methods: {}
+        methods: {
+            onReg: function () {
+                if (lock) return;
+                lock = true;
+                this.$http.post("register", {
+                    username: this.username,
+                    password: this.password,
+                    phone: this.phone
+                }, {
+                    headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8"},
+                    emulateJSON: true
+                }).then(response => {
+                    if (response.body.code !== 0) {
+                        alert(response.body.msg);
+                    }else{
+                        this.$router.push("/login-reg/login")
+                    }
+                    lock = false;
+                    console.log(response);
+                }, response => {
+                    lock = false;
+                    console.log(response);
+                })
+            }
+        }
     }
 </script>
 
@@ -92,17 +123,14 @@
         background: url("/img/green@2x.png") no-repeat left center;
         background-size: 18px;
     }
-
     .main .center .info {
         background: url("/img/info@2x.png") no-repeat left center;
         background-size: 18px;
     }
-
     .main .bottom div .selected {
         background: url("/img/checkbox_check@2x.png") no-repeat left center;
         background-size: 18px;
     }
-
     .main .bottom div b {
         background: url("/img/down.png") no-repeat left center;
         display: inline-block;
@@ -110,7 +138,7 @@
         height: 20px;
         background-size: 12px;
     }
-    .main .bottom div b.up{
+    .main .bottom div b.up {
         background-image: url("/img/up.png");
     }
 </style>

@@ -11,7 +11,8 @@ import MintUi from "mint-ui";
 Vue.use(MintUi);
 Vue.use(VueResource);
 
-Vue.http.options.root = `http://${address.ip()}:8888`;
+// Vue.http.options.root = `http://${address.ip()}:8888`;
+Vue.http.options.root = 'http://192.168.0.105';
 Vue.config.productionTip = false;
 
 new Vue({

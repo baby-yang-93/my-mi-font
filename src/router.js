@@ -27,6 +27,14 @@ export default new Router({
             ],
             beforeEnter: (to, from, next) => {
                 next();
+                return;
+                if (window.localStorage.getItem("login-token")) {
+
+                    next("/chat")
+
+                } else {
+                    next()
+                }
             }
         },
         {
@@ -35,19 +43,29 @@ export default new Router({
             children: [
                 {path: "", redirect: "dialogueList"},
                 {
-                    path: "dialogueList/:userId?", name: "dialogueList", components: {
+                    path: "dialogueList/:userId?", name: "dialogueList",
+                    components: {
                         default: dialogueList,
                         right: formal
                     }
                 },
                 {
-                    path: "news", name: "news", components: {
+                    path: "news/:id?", name: "news", components: {
                         default: news,
                         right: newsContent
                     }
                 },
                 {path: "friends", name: "friends", component: friends},
-            ]
+            ],
+            beforeEnter(to,from,next){
+                // next();
+                // return;
+                if(window.localStorage.getItem("login-token")){
+                    next();
+                }else {
+                    next("/login-reg");
+                }
+            }
         },
 
 

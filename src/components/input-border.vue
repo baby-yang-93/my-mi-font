@@ -1,8 +1,8 @@
 <template>
     <div :class="borderClass">
         <div :style="{borderColor:borderColor}">
-            <input :type="type" :placeholder="placeholder" :name="name" v-model="value"
-                   @focus="onFocus()"
+            <input :type="type" :placeholder="placeholder" :name="name" :value="value"
+                   @input="$emit('input', $event.target.value)" @focus="onFocus()"
                    @blur="onBlur()" @mouseover="onMouseOver()" @mouseout="onMouseOut()">
         </div>
         <slot :error="error" :value="value" :isFocus="isFocus"></slot>
@@ -16,7 +16,7 @@
             return {
                 error: false,
                 borderColor: "#aaa",
-                value: "",
+
                 isFocus: false
             }
         },
@@ -48,7 +48,7 @@
             }
 
         },
-        props: ["borderClass", "placeholder", "name", "type"]
+        props: ["borderClass", "placeholder", "name", "type", "value"]
     }
 </script>
 
